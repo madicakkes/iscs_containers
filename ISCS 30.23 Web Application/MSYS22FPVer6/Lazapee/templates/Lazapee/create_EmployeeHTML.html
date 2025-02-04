@@ -1,0 +1,59 @@
+{% extends 'Lazapee/baseHTML.html' %}
+{% load static %}
+
+{% block content %}
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/create_EmployeeCSS.css">
+
+    <div id="create_space">
+        <div id="create_employee_form">
+          <div id="form_title">
+            <h2>
+            Create Employee
+            </h2>
+            
+          </div>
+          <form method="POST" action="{% url 'create_Employee' %}">{% csrf_token %}
+            <div id="inputs">
+              <div class="input_field">
+              <label for="username"> Username: </label>
+              <input type="text" id="un" name="un"  placeholder="ex. jamie@gmail.com" required>
+              </div>
+
+              <div class="input_field">
+              <label for="username"> ID Number: </label>
+              <input type="text" id="id_no" name="id_no" placeholder="ex. 2334563" required>
+              </div>
+
+              <div class="input_field">
+              <label for="username"> Rate: </label>
+              <input type="text" id="rate" name="rate" required>
+              </div>
+
+              <div class="input_field">
+              <label for="username"> Allowance (Optional): </label>
+
+              <input type="text" id="allowance" name="allowance">
+              </div>
+              <br>
+
+              <!-- Displays error message -->
+              <div id="message_status">
+                <p> {{error}} </p>
+              </div>
+            
+
+            </div>      
+          <div id="submit_container">
+            <input type="submit" id="submit">
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+    
+    
+{% endblock %}
+
+

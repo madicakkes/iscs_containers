@@ -1,0 +1,132 @@
+{% extends 'Lazapee/baseHTML.html' %}
+{% load static %}
+
+{% block content %}
+
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/Payslips_CSS.css">
+
+      <div id="payslips" style="margin-top:20px; margin-bottom: 50px;">
+        <div id="payroll_creation">
+          <div id="payslip_heading">
+            <h1> Payroll Creation </h1>
+          </div>
+          <div id="message_status">
+            <p> {{ message }} </p>
+          </div>
+
+          <form action="{% url 'view_Payslips' %}" method="post" id="payroll_selection">  {% csrf_token %}
+            <div id="section_one">
+              <div class="payroll_selection_container" id="payroll_selection_container1">
+                <label for="person"> Payroll for: </label>
+                <select id="payroll_person" name="person"  required>
+                  <option value="" disabled selected hidden> Choose...</option>
+                  {% for e in employees %}
+                    <option value="{{ e.id }}"> {{ e.name }} </option>
+                  {% endfor %}
+                    <option value="All Employees"> All Employees </option>
+                </select>
+              </div>
+            </div>
+
+            <div id="section_two">
+              <div class="payroll_selection_container">
+                <label for="month"> Month: </label>
+                <select id="payroll_month" name="month" required>
+                  <option value="" disabled selected hidden> Choose...</option>
+                  <option value=January> January </option>
+                  <option value="February"> February </option>
+                  <option value="March"> March </option>
+                  <option value="April"> April </option>
+                  <option value="May"> May </option>
+                  <option value="June"> June </option>
+                  <option value="July"> July </option>
+                  <option value="August"> August </option>
+                  <option value="September"> September </option>
+                  <option value="October"> October </option>
+                  <option value="November"> November </option>
+                  <option value="December"> December </option>
+                </select>
+              </div>
+
+              <div class="payroll_selection_container">
+                <label for="Year"> Year </label>
+                <input type="text" name="year" placeholder="ex. 2000" id="input_year" required> 
+              </div>
+
+              <div class="payroll_selection_container">
+                <label for="cycle"> Cycle </label>
+                <select id="payroll_cycle" name="cycle" required>
+                  <option value="" disabled selected hidden> Choose...</option>
+                  <option value="1"> 1 </option>
+                  <option value="2"> 2 </option>
+                </select>
+              </div>
+
+            </div>
+
+            <div id="section_three">
+              <button type="submit" id="payroll_submission"> Submit</button>
+            </div>
+
+
+            
+
+          </form>
+        </div>
+
+        
+
+
+        <div id="payslip_summary">
+          <div id="payslip_heading">
+            <h1> Payslips Summary </h1>
+
+          </div>
+
+          <table id="payslip_list">
+            <tr class="payslip_data">
+              <th> ID Number </th>
+              <th> Date </th>
+              <th> Cycle </th>
+              <th> Total Pay </th>
+              <th> Options </th>
+            </tr>
+            {% for p in payslips %}
+            <tr class="payslip_data">
+              
+              <td class="payslip_idNumber">{{ p.getIDNumber }}</td>
+              <td class="payslip_date">{{ p.month }} {{ p.date_range}}, {{ p.year }}</td>
+              <td class="payslip_cycle">{{ p.pay_cycle }}</td>
+              <td class="payslip_totalPay">{{ p.total_pay }}</td>
+              <td class="payslip_options"> <a href="{% url 'view_receipt' p.pk %}"> <button class="view_button"> View </button> </td> </a>
+             
+
+            </tr>
+            {% endfor %}
+
+
+
+
+          </table>
+
+
+        </div>
+        
+      </div>
+
+
+
+
+    
+
+
+
+{% endblock %}
+
+{% block script %}
+
+<script src="/static/PayslipsJS.js">
+</script>
+
+{% endblock %}

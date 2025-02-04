@@ -1,0 +1,58 @@
+{% extends 'Lazapee/baseHTML.html' %}
+{% load static %}
+
+{% block content %}
+
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/updateEmployeeCss.css">
+      <div id="create_space">
+        <div id="create_employee_form">
+          <div id="form_title">
+            <h2>
+            Update Employee
+            </h2>
+          </div>
+
+          <form action="{% url 'update_Employee' e.pk %}" method="post" id="update"> {% csrf_token %}
+            <div id="inputs">
+              <div class="input_field">
+              <label for="username"> Username: </label>
+              <br>
+              <input type="text" id="un" name="un"  placeholder="ex. jamie@gmail.com" value="{{e.name}}" disabled>
+              </div>
+
+              <div class="input_field">
+              <label for="username"> ID Number: </label>
+              <br>
+              <input type="text" id="id_no" name="id_no" placeholder="ex. 2334563" value="{{e.id_number}}" disabled>
+              </div>
+
+              <div class="input_field">
+              <label for="username"> Rate: </label>
+              <br>
+              <input type="text" id="rate" name="rate" placeholder="PHP {{e.rate}}">
+              </div>
+
+              <div class="input_field">
+              <label for="username"> Allowance (Optional): </label>
+              <br>
+              <input type="text" id="allowance" name="allowance" placeholder="PHP {{e.allowance}}">
+              </div>
+              
+            </div>
+
+
+
+            <div id="submit_container">
+              <input type="submit" id="submit">
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+
+    <script src="/static/updateEmployeeJS.js">
+    </script>
+
+{% endblock %}

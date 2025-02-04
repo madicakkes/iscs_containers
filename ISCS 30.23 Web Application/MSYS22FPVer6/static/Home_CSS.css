@@ -1,0 +1,68 @@
+<!-- Home CSS-->
+
+#create_space {
+  width: 50%;
+  height: 100%;
+}
+
+
+
+
+.page_card {
+  color: rgb(77, 77, 77);
+  height: 450px;
+  width: 350px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.page_card > h2{
+  color: darkblue;
+  font-weight: 600;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+}
+
+
+
+.page_card:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+#selection_iconone {
+  background-image: url("img/badge.png");
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  margin: 15px;
+
+}
+
+#selection_icontwo {
+  background-image: url("img/summarize.png");
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  margin: 15px;
+}
+
+#selection_iconthree {
+  background-image: url("img/receipt.png");
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  margin: 15px;
+}
+
+#select {
+  min-width: 100%;
+  min-height: 100%;
+}

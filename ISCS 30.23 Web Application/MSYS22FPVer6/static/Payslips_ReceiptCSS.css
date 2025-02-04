@@ -1,0 +1,108 @@
+#receipt {
+  width: 700px;
+  font-size: .92em;
+  margin: 30px;
+  padding: 10px;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+
+
+#receipt_heading {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+}
+
+#receipt_amount_header{
+  width: 100%;
+  text-indent: 70%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#receipt_amount_header h4{
+  font-weight: bold;
+}
+
+.receipt_sections{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: solid 0.5px lightgrey;
+}
+
+.receipt_sections h4{
+  font-weight: bold;
+}
+
+.receipt_computations{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+
+
+
+.computation_first {
+  width: 45%;
+  list-style: none;
+  line-height: 23px;
+  margin-left: 15px;
+  text-align: left;
+}
+
+.computation_two {
+  list-style: none;
+  line-height: 23px;
+  width: 40%;
+  text-align: left;
+}
+
+
+
+.receipt_totals {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display:flex;
+  justify-content: space-between;
+  border-top: solid 0.5px lightgrey;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.receipt_totals h4 {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.receipt_totals > span{
+  width: 25%;
+  text-align: center;
+  margin-right: 11.5%;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+#receipt_netpay {
+  display: flex;
+  justify-content: space-between;
+}
+
+#receipt_netpay > span {
+  display: flex; 
+  align-items: center; 
+  width: 25%;
+  justify-content: center;
+  margin-right: 11.5%; 
+  margin-top: 3%;
+  font-size: 15px;
+}
+
+#receipt_netpay h4 {
+  font-weight: bold;
+}

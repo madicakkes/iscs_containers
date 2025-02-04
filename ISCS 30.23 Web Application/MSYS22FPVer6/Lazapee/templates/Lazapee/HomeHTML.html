@@ -1,0 +1,44 @@
+{% extends 'Lazapee/baseHTML.html' %}
+{% load static %}
+
+{% block content %}
+
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/Home_CSS.css">
+
+<div style="width: 100%; height: 100%; display: flex; justify-content: space-around; align-items: center; padding-left: 15px; padding-right: 15px;">
+  <div class="page_card">
+    <div id="selection_iconone"> 
+
+    </div>
+    <h2> New Employees</h2>
+    <p> Create an employee.</p>
+    <a href="{% url 'create_Employee' %}" class="selection_link"> </a>
+  </div>
+  <div class="page_card">
+    <div id="selection_icontwo"> 
+          
+    </div>
+    <h2> Manage Employees</h2>
+    <p> Add overtime hours. Update employee information. </p>
+    <a href="{% url 'view_Employees' %}" class="selection_link"> </a>
+  </div>
+
+  <div class="page_card">
+    <div id="selection_iconthree"> 
+          
+    </div>
+    <h2> Get Started With Payroll</h2>
+    <p> Create Payslips for an employee or all employees. View payslip details.</p>
+    <a href="{% url 'view_Payslips'%}" class="selection_link"> </a>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block script %}
+<script src="/static/HomeJS.js">
+</script>
+{% endblock %}

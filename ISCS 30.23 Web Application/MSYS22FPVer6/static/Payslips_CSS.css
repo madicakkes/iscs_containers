@@ -1,0 +1,186 @@
+#message_status p {
+  color: rgb(30, 30, 30);
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+#payslips {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  min-width: 750px;
+  max-width: 750px;
+  display: flex;
+  flex-flow: column;
+}
+
+#payslip_heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+#payslip_heading h1 {
+  font-weight: 500;
+  font-family: Gill Sans;
+  padding-bottom: 10px;
+}
+
+#payroll_creation {
+  padding-bottom: 30px;
+  border-bottom: solid 0.5px rgb(220, 218, 207);
+}
+
+#payroll_selection {
+  background-color: rgb(239, 237, 232);
+  min-width: 100%;
+  max-width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+#section_one {
+  min-width: 96%;
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 0.5px lightgrey;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#section_two {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-bottom: 2px;
+}
+
+#section_three {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3px;
+}
+
+#payroll_submission {
+  padding: 6px 16px;
+  margin: 10px 0px;
+  cursor: pointer;
+  color: white;
+  background-color: #e2710e;
+  border-radius: 2px;
+  border: .5px solid rgba(73, 73, 73, 0.488);
+  font-size: 13px;
+}
+
+#payroll_submission:hover {
+  background-color: #fda04e;
+}
+
+#payroll_submission:active {
+  cursor: wait;
+  color: grey;
+}
+
+.payroll_selection_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 33%;
+}
+
+.payroll_selection_container input {
+  width: 175px;
+  height: 28px;
+  padding-left: 5px;
+}
+
+.payroll_selection_container select {
+  width: 175px;
+  height: 32px;
+  padding-left: 4px;
+}
+
+#payroll_selection_container1 {
+  width: 380px;
+}
+
+#payroll_selection_container1 select {
+  width: 260px;
+}
+
+#payslip_summary {
+  margin-top: 20px;
+  padding-bottom: 40px;
+  border-bottom: solid 0.5px lightgrey;
+}
+
+#payslip_list {
+  border-collapse: collapse;
+  border-radius: 20px solid lightgrey;
+  width: 100%;
+  max-width: 100%;
+}
+
+#payslip_list th{
+  background-color: darkblue;
+  color: white;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 13px;
+  font-size: 15px;
+  text-align: center;
+}
+
+#payslip_list td{
+  padding-left: 11px;
+  padding-top: 7px;
+  padding-bottom: 27px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.payslips_idNumber{
+  min-width: 110px;
+  max-width: 110px;
+}
+
+.payslips_date{
+  min-width: 110px;
+  max-width: 110px;
+}
+
+.payslips_cycle{
+  min-width: 110px;
+  max-width: 110px;
+}
+
+.payslips_totalPay{
+  min-width: 110px;
+  max-width: 110px;
+}
+
+.payslips_options{
+  min-width: 110px;
+  max-width: 110px;
+  padding-top: 10px;
+}
+
+.view_button {
+  min-width: 60px;
+  padding: 6px 5px;
+  margin-top: 8px;
+  color: rgb(255, 255, 255);
+  border: transparent;
+  background-color: #e2710e;
+  border-radius: 2px;
+  border: .5px solid rgba(73, 73, 73, 0.488);
+  font-size: 13px;
+}
+
+.view_button:hover {
+  background-color: #fda04e;;
+  cursor: pointer;
+}

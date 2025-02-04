@@ -1,0 +1,107 @@
+{% extends 'Lazapee/baseHTML.html' %}
+{% load static %}
+
+{% block content %}
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/Payslips_ReceiptCSS.css">
+
+    <div id="receipt">
+      <div id="receipt_heading">
+        <div id="receipt_profile">
+          <div>NAME: {{ e.getName }} </div>
+          <div>ID NUMBER: 
+            <span id="id_number"> 
+              {{ e.getID }}
+            </span>
+          </div>
+
+        </div>
+        <div id="receipt_detail">
+          <div> DATE: {{ p.getMonth }} {{ p.getDate_range }} {{ p.getYear }}</div>
+          <div> PAYSLIP ID: {{ p.pk }}</div>
+        </div>
+      </div>
+
+      <div id="receipt_amount_header"> <h4> AMOUNT </h4></div>
+
+        <div class="receipt_sections">
+          <h4> EARNINGS: </h4>
+          <div class="receipt_computations">
+            <ul class="computation_first">
+              <li> Base Pay per Cycle</li>              
+              <li> Allowances</li>
+              <li> Overtime</li>
+            </ul>
+            <ul class="computation_two">
+              <li> PHP {{ p.getCycleRate }}</li>
+              <li> PHP {{ p.getEarnings_allowance }} </li>
+              <li> PHP {{ p.getOvertime }}</li>
+            </ul>
+          </div>
+          <div class="receipt_totals">
+            <h4> Gross Pay</h4>
+            <span> PHP {{ p.getGross }} </span>
+          </div>
+        </div>
+
+
+        <div class="receipt_sections">
+          <h4> DEDUCTIONS: </h4>
+          <div class="receipt_computations">
+
+            {% if p.pay_cycle == 1 %}
+
+                <ul class="computation_first">
+                  <li> W/HOLDING TAX: </li>
+                  <li> PAG-IBIG: </li>
+                </ul>
+                <ul class="computation_two">
+                  <li> PHP {{ p.getDeductions_tax }} </li>
+                  <li> PHP {{ p.getPag_ibig }} </li>
+                </ul>
+
+            {% endif %}
+
+            {% if p.pay_cycle == 2 %}
+
+                <ul class="computation_first">
+                  <li> W/ HOLDING TAX: </li>
+                  <li> PHILIHEALTH: </li>
+                  <li> SSS: </li>
+                </ul>
+                <ul class="computation_two">
+                  <li> PHP {{ p.getDeductions_tax }} </li>
+                  <li> PHP {{ p.getDeductions_health }} </li>
+                  <li> PHP {{ p.getSSS }}</li>
+                </ul>
+
+            {% endif %}
+
+          </div>
+        
+          <div class="receipt_totals">
+            <h4> Total Deductions</h4>
+            <span> PHP {{ p.getTotalDeduction }} </span>
+          </div>
+
+        </div>
+        <div id="receipt_netpay">
+          <h3> NET PAY: </h3>
+          <span> PHP {{ p.getTotal_pay }} </span>
+        </div>
+
+      </div>
+      
+
+
+
+
+    </div>
+
+    
+{% endblock %}
+
+{% block script %}
+<script src="/static/Payslips_ReceiptJS.js">
+</script>
+{% endblock %}

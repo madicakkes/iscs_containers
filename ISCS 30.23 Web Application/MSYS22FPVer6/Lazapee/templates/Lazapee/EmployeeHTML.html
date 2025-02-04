@@ -1,0 +1,58 @@
+{% extends 'Lazapee/baseHTML.html' %}
+{% load static %}
+
+{% block content %}
+
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/Employees_CSS.css">
+
+
+  <div id="employees" style="margin-top: 10px; margin-bottom: 80px;">
+    <div id="employee_heading" style="display: flex; justify-content: space-between; margin-bottom: 10px;margin-left: 2px;margin-right: 4px;margin-top: 40px;">
+      <h1> Employees </h1><a href="{% url 'create_Employee' %}"> <button id="new_employee_button"> +New Employee </button> </a>
+    </div>
+
+    <p style="align-self: auto; color:#10565b; font-size:12px; padding:10px">
+      {{success}}
+    </p>
+
+    <table id="employee_list">
+      <tr class="employee_data">
+        <th> Name </th>
+        <th> ID Number </th>
+        <th> Rate </th>
+        <th> Allowance </th>
+        <th> Overtime </th>
+        <th id="options"> Options </th>
+      </tr>
+
+      {% for e in employee %}
+      <tr class="employee_data">
+       
+        <td class="employee_name"> {{ e.name }} </td>
+        <td class="employee_idNumber"> {{ e.id_number }} </td>
+        <td class="employee_rate"> Php {{ e.rate }} </td>
+        <td class="employee_allowance"> {{ e.allowance }} </td>
+        <td class="employee_overtime"> {{ e.ot_hrs }} </td>
+        <td class="employee_options">
+          <a href="{% url 'update_Employee' pk=e.pk %}"><button class="update_button"> Update </button></a>
+          <form action="{% url 'delete_Employee' pk=e.pk %}" method="post" id="delete"> {% csrf_token %}
+          <button class="delete_button"> Delete </button>
+          </form>
+          <span class="row">
+            <form action="{% url 'update_OT' pk=e.pk %}" method="post" id="overtime_update"> {% csrf_token %}
+              <input type="text" placeholder="Overtime Hours" name="ot_hrs" id = "ot_hrs" class="overtime_hours" required> </input>
+              <button type="submit" class="add_overtime"> Add Overtime </button>
+            </form>
+          </span>
+        </td>
+        
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  
+  <script src="/static/employeeJS.js">
+  </script>
+
+{% endblock %}

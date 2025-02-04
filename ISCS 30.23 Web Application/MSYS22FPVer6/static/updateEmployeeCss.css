@@ -1,0 +1,99 @@
+#create_space {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#create_employee_form {
+  max-width: 500px;
+  min-width: 300px;
+  border: solid silver .5px;
+  border-radius: 5px;
+  margin-top: 6.1%;
+  margin-bottom: 5%;
+
+}
+
+#form_title {
+  background-color: darkblue;
+  position: relative;
+  border-radius: 3px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  padding: 0px 20px;
+
+
+}
+
+
+#form_title, h2 {
+  font-weight: 500;
+  font-size: 1.46em;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  color: white;
+}
+
+#formed {
+  padding: 15px;
+}
+
+#inputs {
+  padding-top: 20px;
+  padding-right: 10px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+.input_field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input_field, label {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: grey;
+
+}
+
+.input_field, input {
+  padding: 7px;
+
+}
+
+#submit_container {
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#submit {
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-left: -7px;
+  cursor: pointer;
+  border-color: transparent;
+  color: white;
+  background-color: rgb(20, 120, 280);
+  border-radius: 2px;
+}
+
+#submit:hover {
+  background-color: rgb(20, 120, 200);
+}
+
+#submit:active {
+  cursor: wait;
+  color: grey;
+}

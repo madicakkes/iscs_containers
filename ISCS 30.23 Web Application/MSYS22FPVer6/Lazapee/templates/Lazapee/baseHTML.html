@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Lazapee ?! Employees </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/BaseCSS.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  </head>
+
+  <body>
+    <div id="header">
+      <div id= "title">
+        <div id="app_logo"></div> 
+        <h3> 
+          LAZAPEE Payroll 
+        </h3>
+      </div>
+      <div id="links">
+        <span class="choice"> <a href="{% url 'home' %}" class="selection"> Home </a> </span>
+        <span class="choice"> <a href="{% url 'view_Employees' %}" class="selection"> Employees </a> </span>
+        <span class="choice"> <a href="{% url 'view_Payslips' %}" class="selection"> Payslips </a> </span>
+      </div>
+    </div>
+    
+
+    <div id="body">
+
+        {% block content %}
+        {% endblock %}
+
+
+    </div>
+
+
+
+    <div id="footer">
+      <div id="copyright">
+        © Lazapee 2024
+      </div>
+
+    </div>
+
+    {% block script %}
+    {% endblock %}
+
+
+
+
+
+  </body>
+
+
+
+</html>
