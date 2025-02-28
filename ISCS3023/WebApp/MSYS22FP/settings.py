@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'HongKong'
+TIME_ZONE = 'US-Central1'
 
 USE_I18N = True
 
