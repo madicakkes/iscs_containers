@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Employee, Payslip
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import JsonResponse
+from django.db import connection
 
 def home(request):
     return render(request, 'Lazapee/HomeHTML.html')
@@ -179,3 +181,49 @@ def view_Receipt(request, pk):
     e = Employee.objects.get(id_number=p.id_number.getID())
 
     return render(request, 'Lazapee/Payslips_ReceiptHTML.html', {'p':p, 'e':e})
+
+#added
+
+from django.http import JsonResponse, HttpResponse
+from django.db import connection
+import logging
+
+logger = logging.getLogger(__name__)
+
+def home(request):
+    """Home page view"""
+    return HttpResponse("""
+    <h1>MSYS22FP - Lazapee App on Minikube</h1>
+    <p>Your Django application is running successfully on Kubernetes!</p>
+    <ul>
+        <li><a href="/health/">Health Check</a></li>
+        <li><a href="/admin/">Admin Panel</a></li>
+    </ul>
+    <p>Project: MSYS22FP</p>
+    <p>App: Lazapee</p>
+    <p>Environment: Minikube</p>
+    """)
+
+def health_check(request):
+    """Health check endpoint for Kubernetes"""
+    try:
+        # Check database connection
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+        
+        return JsonResponse({
+            "status": "healthy", 
+            "database": "connected",
+            "project": "MSYS22FP",
+            "app": "Lazapee",
+            "environment": "minikube",
+            "message": "Django app is running successfully!"
+        })
+    except Exception as e:
+        logger.error(f"Health check failed: {str(e)}")
+        return JsonResponse({
+            "status": "unhealthy", 
+            "error": str(e),
+            "project": "MSYS22FP",
+            "app": "Lazapee"
+        }, status=500)

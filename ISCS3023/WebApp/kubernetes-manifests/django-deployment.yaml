@@ -1,0 +1,134 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+  namespace: webapp
+  labels:
+    app: webapp
+spec:
+  replicas: 2  # Smaller for minikube
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      initContainers:
+      - name: webapp-migrations
+        image: mauiemarie/webapp:latest
+        command: ['python', 'manage.py', 'migrate']
+        env:
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secrets
+              key: SECRET_KEY
+        - name: USE_POSTGRES
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: USE_POSTGRES
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: DB_HOST
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: DB_PORT
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: DB_NAME
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secrets
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secrets
+              key: DB_PASSWORD
+      containers:
+      - name: webapp
+        image: mauiemarie/webapp:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secrets
+              key: SECRET_KEY
+        - name: DEBUG
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: DEBUG
+        - name: DJANGO_ALLOWED_HOSTS
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: ALLOWED_HOSTS
+        - name: USE_POSTGRES
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: USE_POSTGRES
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: DB_HOST
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: DB_PORT
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: DB_NAME
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secrets
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secrets
+              key: DB_PASSWORD
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /health/
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health/
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
