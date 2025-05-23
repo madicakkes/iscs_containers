@@ -17,9 +17,8 @@ This repository contains a Django web application configured for deployment on a
 
 bash
 # 1. Clone the repository
-git clone https://github.com/your-username/your-repo.git
-https://github.com/madicakkes/iscs_containers/nE.md
-cd your-repo
+git clone https://github.com/madicakkes/iscs_containers
+cd iscs_containers
 
 # 2. Make scripts executable
 chmod +x scripts/*.sh
@@ -40,8 +39,8 @@ kubectl port-forward service/webapp-service 8000:80 -n webapp
 
 # 1. Clone and Setup
 bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/madicakkes/iscs_containers
+cd iscs_containers
 chmod +x scripts/*.sh
 
 # 2. Quick Deploy
